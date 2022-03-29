@@ -1,0 +1,5 @@
+OMP: Info #270: omp_set_nested routine deprecated, please use omp_set_max_active_levels instead.
+[Qibo 0.1.7|INFO|2022-03-14 22:42:57]: Using qibojit (numba) backend on /CPU:0
+[Qibo 0.1.7|INFO|2022-03-14 22:42:59]: Using tensorflow backend on /device:CPU:0
+[Qibo 0.1.7|WARNING|2022-03-14 22:42:59]: `set_threads` is not supported by the tensorflow backend. Please use tensorflow's thread setters: `tf.config.threading.set_inter_op_parallelism_threads` or `tf.config.threading.set_intra_op_parallelism_threads` to switch the number of threads.
+slurmstepd-fermi: error: *** JOB 1195133 ON fermi CANCELLED AT 2022-03-14T22:49:24 ***
