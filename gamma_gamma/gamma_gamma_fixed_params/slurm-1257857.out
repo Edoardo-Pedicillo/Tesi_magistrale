@@ -1,0 +1,31 @@
+OMP: Info #270: omp_set_nested routine deprecated, please use omp_set_max_active_levels instead.
+[Qibo 0.1.7|INFO|2022-04-05 00:02:50]: Using qibojit (numba) backend on /CPU:0
+[Qibo 0.1.7|INFO|2022-04-05 00:02:51]: Using tensorflow backend on /device:CPU:0
+[Qibo 0.1.7|WARNING|2022-04-05 00:02:51]: `set_threads` is not supported by the tensorflow backend. Please use tensorflow's thread setters: `tf.config.threading.set_inter_op_parallelism_threads` or `tf.config.threading.set_intra_op_parallelism_threads` to switch the number of threads.
+Traceback (most recent call last):
+  File "/home/edoardopedicillo/gamma_gamma_fixed_params/quantum_classical_1Dgamma.py", line 209, in <module>
+    main(**args)
+  File "/home/edoardopedicillo/gamma_gamma_fixed_params/quantum_classical_1Dgamma.py", line 197, in main
+    train(discriminator, latent_dim, layers, nqubits, training_samples, discriminator, circuit, n_epochs, batch_samples, lr, hamiltonian1)
+  File "/home/edoardopedicillo/gamma_gamma_fixed_params/quantum_classical_1Dgamma.py", line 157, in train
+    x_fake, y_fake = generate_fake_samples(initial_params, latent_dim, half_samples, circuit, nqubits, layers, hamiltonian1)
+  File "/home/edoardopedicillo/gamma_gamma_fixed_params/quantum_classical_1Dgamma.py", line 129, in generate_fake_samples
+    set_params(circuit, params, x_input, i, nqubits, layers, latent_dim)
+  File "/home/edoardopedicillo/gamma_gamma_fixed_params/quantum_classical_1Dgamma.py", line 86, in set_params
+    p.append(params[index]*x_input[noise][i] + params[index+1])
+  File "/home/edoardopedicillo/miniconda3/lib/python3.7/site-packages/tensorflow/python/ops/array_ops.py", line 1293, in _SliceHelperVar
+    return _slice_helper(var.value(), slice_spec, var)
+  File "/home/edoardopedicillo/miniconda3/lib/python3.7/site-packages/tensorflow/python/util/dispatch.py", line 201, in wrapper
+    return target(*args, **kwargs)
+  File "/home/edoardopedicillo/miniconda3/lib/python3.7/site-packages/tensorflow/python/ops/array_ops.py", line 1047, in _slice_helper
+    name=name)
+  File "/home/edoardopedicillo/miniconda3/lib/python3.7/site-packages/tensorflow/python/util/dispatch.py", line 201, in wrapper
+    return target(*args, **kwargs)
+  File "/home/edoardopedicillo/miniconda3/lib/python3.7/site-packages/tensorflow/python/ops/array_ops.py", line 1219, in strided_slice
+    shrink_axis_mask=shrink_axis_mask)
+  File "/home/edoardopedicillo/miniconda3/lib/python3.7/site-packages/tensorflow/python/ops/gen_array_ops.py", line 10447, in strided_slice
+    _ops.raise_from_not_ok_status(e, name)
+  File "/home/edoardopedicillo/miniconda3/lib/python3.7/site-packages/tensorflow/python/framework/ops.py", line 6862, in raise_from_not_ok_status
+    six.raise_from(core._status_to_exception(e.code, message), None)
+  File "<string>", line 3, in raise_from
+tensorflow.python.framework.errors_impl.InvalidArgumentError: slice index 6 of dimension 0 out of bounds. [Op:StridedSlice] name: strided_slice/
