@@ -17,7 +17,11 @@ import argparse
 set_backend('tensorflow')
 set_threads(4)
 
-fparams=np.loadtxt("fixed_PARAMS", delimiter=' ')
+def load_fixed_params(n_params=10):
+
+    fparams=np.loadtxt("fixed_PARAMS", delimiter=' ')
+
+    return fparams[:n_params]
 
 # define the standalone discriminator model
 def define_discriminator(n_inputs=1, alpha=0.2, dropout=0.2):
@@ -60,7 +64,8 @@ def define_cost_gan(params, discriminator, latent_dim, samples, circuit, nqubits
     loss = tf.reduce_mean(loss)
     return loss
 
-def set_params(circuit, params, x_input, i, nqubits, layers, latent_dim):
+def set_params(circuit, params, x_input, i, nqubits, layers, latent_dim,n_params):
+    fparams=load_fixed_params(n_params)
     
     p=circuit.get_parameters()
     
@@ -117,7 +122,7 @@ def generate_latent_points(latent_dim, samples):
     return x_input
  
 # use the generator to generate fake examples, with class labels
-def generate_fake_samples(params, latent_dim, samples, circuit, nqubits, layers, hamiltonian1):
+def generate_fake_samples(params, latent_dim, samples, circuit, nqubits, layers, hamiltonian1,n_params):
     # generate points in latent space
     x_input = generate_latent_points(latent_dim, samples)
     x_input = np.transpose(x_input)
@@ -125,7 +130,7 @@ def generate_fake_samples(params, latent_dim, samples, circuit, nqubits, layers,
     X = []
     # quantum generator circuit
     for i in range(samples):
-        set_params(circuit, params, x_input, i, nqubits, layers, latent_dim)
+        set_params(circuit, params, x_input, i, nqubits, layers, latent_dim,n_params)
         circuit_execute = circuit.execute()
         X.append(hamiltonian1.expectation(circuit_execute))
     # shape array
