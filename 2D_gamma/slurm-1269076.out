@@ -1,0 +1,5 @@
+OMP: Info #270: omp_set_nested routine deprecated, please use omp_set_max_active_levels instead.
+[Qibo 0.1.7|INFO|2022-04-12 12:55:57]: Using qibojit (numba) backend on /CPU:0
+[Qibo 0.1.7|INFO|2022-04-12 12:56:03]: Using tensorflow backend on /device:CPU:0
+/home/edoardopedicillo/tesi/2D_gamma/quantum_classical_2Dgamma.py:91: RuntimeWarning: covariance is not positive-semidefinite.
+  x, y = np.random.multivariate_normal(mean, cov, samples).T/4
