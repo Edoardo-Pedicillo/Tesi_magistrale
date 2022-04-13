@@ -86,12 +86,21 @@ def set_params(circuit, params, x_input, i, nqubits, layers, latent_dim):
 def generate_training_real_samples(samples):
   # generate training samples from the distribution
     s = []
+    '''
     mean = [0, 0]
     cov = [[1, 0.5], [0.5, 1]]        
     x, y = np.random.multivariate_normal(mean, cov, samples).T/4
     s1 = np.reshape(x, (samples,1))
     s2 = np.reshape(y, (samples,1))
-   
+    '''
+    s1 = np.random.gamma(1., size=samples)
+    s1 = s1/2 - 1
+    s1= np.reshape(s1, (samples,1))
+    
+    s2 = np.random.gamma(1., size=samples)
+    s2 = s2/2 - 1
+    s2= np.reshape(s2, (samples,1))
+    
     s = np.hstack((s1,s2))
     return s
  
