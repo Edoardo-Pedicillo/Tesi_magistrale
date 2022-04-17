@@ -220,7 +220,7 @@ if __name__ == "__main__":
     parser.add_argument("--latent_dim", default=3, type=int)
     parser.add_argument("--layers", default=1, type=int)
     parser.add_argument("--training_samples", default=10000, type=int)
-    parser.add_argument("--n_epochs", default=5000, type=int)
+    parser.add_argument("--n_epochs", default=30000, type=int)
     parser.add_argument("--batch_samples", default=128, type=int)
     parser.add_argument("--lr", default=0.5, type=float)
     args = vars(parser.parse_args())
