@@ -16,6 +16,7 @@ import argparse
 
 set_backend('tensorflow')
 # load fixed params
+tot_params=12
 def load_fixed_params(n_params=10):
 
     fparams=np.loadtxt("fixed_PARAMS", delimiter=' ')
@@ -69,26 +70,19 @@ def set_params(circuit, params, x_input, i, nqubits, layers, latent_dim, n_param
     p = []
     index = 0
     noise = 0
-    
-    for l in range(layers):
-        for q in range(nqubits):
-            p.append(params[index]*x_input[noise][i] + params[index+1])
-            index+=2
-            noise=(noise+1)%latent_dim
-            p.append(params[index]*x_input[noise][i] + params[index+1])
-            index+=2
-            noise=(noise+1)%latent_dim
-            #print( " 1 " , index)
-        #p.append(params[index]*x_input[noise][i] + params[index+1])
-        #index+=2
-        #noise=(noise+1)%latent_dim
-        
-        # print(" 2" ,index)
-    for q in range(nqubits):
+    for _ in range(int(len(fparams)/2)):
+        p.append(fparams[index]*x_input[noise][i] + fparams[index+1])
+        index+=2
+        noise=(noise+1)%latent_dim
+    index=0
+    len_params=tot_params-len(fparams)
+    for _ in range(int(len_params/2)):
+       
+        #print(index,params[index],params[index+1])
         p.append(params[index]*x_input[noise][i] + params[index+1])
         index+=2
         noise=(noise+1)%latent_dim
-        #print(q," 3 " ,index)
+
     circuit.set_parameters(p) 
 
 def generate_training_real_samples(samples):
@@ -156,7 +150,7 @@ def train(d_model, latent_dim, layers, nqubits, training_samples, discriminator,
     g_loss = []
     # determine half the size of one batch, for updating the discriminator
     half_samples = int(samples / 2)
-    initial_params = tf.Variable(np.random.uniform(-0.15, 0.15, 12))#4*layers*nqubits + 2*nqubits + 2*layers))
+    initial_params = tf.Variable(np.random.uniform(-0.15, 0.15, tot_params-n_params))#4*layers*nqubits + 2*nqubits + 2*layers))
     optimizer = tf.optimizers.Adadelta(learning_rate=lr)
     # prepare real samples
     s = generate_training_real_samples(training_samples)
