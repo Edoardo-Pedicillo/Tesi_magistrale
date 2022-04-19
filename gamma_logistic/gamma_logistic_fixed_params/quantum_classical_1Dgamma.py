@@ -67,7 +67,7 @@ def define_cost_gan(params, discriminator, latent_dim, samples, circuit, nqubits
 def set_params(circuit, params, x_input, i, nqubits, layers, latent_dim,n_params):
     fparams=load_fixed_params(n_params)
     
-    p=circuit.get_parameters()
+    #p=circuit.get_parameters()
     
     #new_params=np.append(fparams,params)
     #print(params)
