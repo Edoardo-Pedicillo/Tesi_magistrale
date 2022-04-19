@@ -170,11 +170,11 @@ def train(d_model, latent_dim, layers, nqubits, training_samples, discriminator,
         grads = tape.gradient(loss, initial_params)
         optimizer.apply_gradients([(grads, initial_params)])
         g_loss.append(loss)
-        np.savetxt(f"PARAMS_2Dgaussian_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}_{n_params}", [initial_params.numpy()], newline='')
-        np.savetxt(f"dloss_2Dgaussian_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}_{n_params}", [d_loss], newline='')
-        np.savetxt(f"gloss_2Dgaussian_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}_{n_params}", [g_loss], newline='')
+        np.savetxt(f"PARAMS_2Dgaussian_gamma_different_circuit_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}_{n_params}", [initial_params.numpy()], newline='')
+        np.savetxt(f"dloss_2Dgaussian_gamma_different_circuit_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}_{n_params}", [d_loss], newline='')
+        np.savetxt(f"gloss_2Dgaussian_gamma_different_circuit_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}_{n_params}", [g_loss], newline='')
         # serialize weights to HDF5
-        discriminator.save_weights(f"discriminator_2Dgaussian_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}_{n_params}.h5")
+        discriminator.save_weights(f"discriminator_2Dgaussian_gamma_different_circuit_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}_{n_params}.h5")
 
 def main(latent_dim, layers, training_samples, n_epochs, batch_samples, lr,n_params):
     
@@ -205,6 +205,8 @@ def main(latent_dim, layers, training_samples, n_epochs, batch_samples, lr,n_par
     for l in range(layers):
         for q in range(nqubits):
             circuit.add(gates.RY(q, 0))
+        
+        for q in range(nqubits):
             circuit.add(gates.RZ(q, 0))
         
         #circuit.add(gates.CRY(0, 1, 0))
