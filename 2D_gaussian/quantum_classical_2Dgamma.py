@@ -16,6 +16,24 @@ import argparse
 
 set_backend('tensorflow')
 
+def kl_divergence(bins_real, bins_fake,epsilon):
+    
+    epsilon=0.1
+    prob_real=[]
+    prob_fake=[]
+    for i in range (len(bins_real)):
+        prob_real.append(bins_real[i]+epsilon)
+        prob_fake.append(epsilon+bins_fake[i])
+
+    #print(prob_fake,prob_real)  
+
+    prob_real=prob_real/sum(prob_real) # probability for each bin (Normalization)
+    prob_fake=prob_fake/sum(prob_fake)
+
+   
+    return sum(prob_real[i] * np.log(prob_real[i]/prob_fake[i]) for i in range(len(prob_real)))# Convergence problem if a[i] or b[i] equals zero. 
+                                                            #I add a little quantity to each bin to avoid problems
+   
 # define the standalone discriminator model
 def define_discriminator(n_inputs=2, alpha=0.2, dropout=0.2):
     model = Sequential()
@@ -168,6 +186,21 @@ def train(d_model, latent_dim, layers, nqubits, training_samples, discriminator,
         grads = tape.gradient(loss, initial_params)
         optimizer.apply_gradients([(grads, initial_params)])
         g_loss.append(loss)
+
+        if i%100==0:
+            print(f"number of epochs {i}")
+            hh_real = np.histogram2d(x_real[0], x_real[1] , bins=100)
+            hh_fake = np.histogram2d(x_fake[0], x_fake[1] , bins=hh_real[1])
+
+            if i != 0:
+
+                with open(f"KLdiv_2Dgaussian_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}", "ab") as f:
+                    
+                    np.savetxt(f, [kl_divergence(hh_real[0][0],hh_fake[0][0] ,epsilon=0.01)], newline=' ')
+            
+            else:
+                np.savetxt(f"KLdiv_2Dgaussian_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}", [kl_divergence(hh_real[0][0],hh_fake[0][0] ,epsilon=0.01)], newline=' ')
+            
         np.savetxt(f"PARAMS_2Dgaussian_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}", [initial_params.numpy()], newline='')
         np.savetxt(f"dloss_2Dgaussian_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}", [d_loss], newline='')
         np.savetxt(f"gloss_2Dgaussian_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}", [g_loss], newline='')
