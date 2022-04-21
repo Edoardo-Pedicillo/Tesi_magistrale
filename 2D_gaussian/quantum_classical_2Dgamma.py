@@ -186,20 +186,25 @@ def train(d_model, latent_dim, layers, nqubits, training_samples, discriminator,
         grads = tape.gradient(loss, initial_params)
         optimizer.apply_gradients([(grads, initial_params)])
         g_loss.append(loss)
-
+       
         if i%100==0:
+            data=5000
+            training_data=5000
+            x_real_kl,_ = generate_real_samples(data, s, training_data)
+        
+            x_fake_kl,_ = generate_fake_samples(initial_params, latent_dim, data, circuit, nqubits, layers, hamiltonian1, hamiltonian2)
             print(f"number of epochs {i}")
-            hh_real = np.histogram2d(x_real[0], x_real[1] , bins=100)
-            hh_fake = np.histogram2d(x_fake[0], x_fake[1] , bins=hh_real[1])
-
+            hh_real = np.histogram2d(tf.transpose(x_real_kl)[0], tf.transpose(x_real_kl)[1] , bins=40)
+            hh_fake = np.histogram2d(tf.transpose(x_fake_kl)[0], tf.transpose(x_fake_kl)[1] , bins=hh_real[1])
+            
             if i != 0:
 
                 with open(f"KLdiv_2Dgaussian_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}", "ab") as f:
                     
-                    np.savetxt(f, [kl_divergence(hh_real[0][0],hh_fake[0][0] ,epsilon=0.01)], newline=' ')
+                    np.savetxt(f, [kl_divergence(hh_real[0].flatten(),hh_fake[0].flatten() ,epsilon=0.01)], newline=' ')
             
             else:
-                np.savetxt(f"KLdiv_2Dgaussian_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}", [kl_divergence(hh_real[0][0],hh_fake[0][0] ,epsilon=0.01)], newline=' ')
+                np.savetxt(f"KLdiv_2Dgaussian_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}", [kl_divergence(hh_real[0].flatten(),hh_fake[0].flatten() ,epsilon=0.01)], newline=' ')
             
         np.savetxt(f"PARAMS_2Dgaussian_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}", [initial_params.numpy()], newline='')
         np.savetxt(f"dloss_2Dgaussian_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}", [d_loss], newline='')
