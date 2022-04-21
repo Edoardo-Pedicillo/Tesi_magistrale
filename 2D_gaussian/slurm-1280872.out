@@ -1,0 +1,4 @@
+OMP: Info #270: omp_set_nested routine deprecated, please use omp_set_max_active_levels instead.
+[Qibo 0.1.7|INFO|2022-04-20 21:21:07]: Using qibojit (numba) backend on /CPU:0
+[Qibo 0.1.7|INFO|2022-04-20 21:21:08]: Using tensorflow backend on /device:CPU:0
+slurmstepd-higgs: error: *** JOB 1280872 ON higgs CANCELLED AT 2022-04-20T21:22:32 ***

@@ -1,0 +1,4 @@
+OMP: Info #270: omp_set_nested routine deprecated, please use omp_set_max_active_levels instead.
+[Qibo 0.1.7|INFO|2022-04-20 20:51:43]: Using qibojit (numba) backend on /CPU:0
+[Qibo 0.1.7|INFO|2022-04-20 20:51:44]: Using tensorflow backend on /device:CPU:0
+slurmstepd-dyson: error: *** JOB 1280871 ON dyson CANCELLED AT 2022-04-20T21:19:29 ***
