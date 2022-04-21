@@ -1,0 +1,4 @@
+OMP: Info #270: omp_set_nested routine deprecated, please use omp_set_max_active_levels instead.
+[Qibo 0.1.7|INFO|2022-04-21 09:14:23]: Using qibojit (numba) backend on /CPU:0
+[Qibo 0.1.7|INFO|2022-04-21 09:14:26]: Using tensorflow backend on /device:CPU:0
+slurmstepd-hawking: error: *** JOB 1281002 ON hawking CANCELLED AT 2022-04-21T09:21:47 ***
