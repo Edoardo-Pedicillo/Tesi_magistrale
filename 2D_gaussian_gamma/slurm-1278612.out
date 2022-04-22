@@ -1,4 +1,0 @@
- ARRAY_TASK_ID: 
-srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
-slurmstepd-fermi: error: *** JOB 1278612 ON fermi CANCELLED AT 2022-04-18T10:52:15 ***
-srun: got SIGCONT
