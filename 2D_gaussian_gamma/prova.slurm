@@ -15,4 +15,4 @@
 #below this line is where we can place our commands, in this case it will just simply output the task ID of the array
 echo "My SLURM_ARRAY_TASK_ID: " $SLURM_ARRAY_TASK_ID
 export NUMBA_NUM_THREADS=1
-	srun /home/edoardopedicillo/miniconda3/bin/python3 /home/edoardopedicillo/tesi/2D_gaussian_gamma/quantum_classical_2Dgamma.py --n_epochs=5000 --lr=0.1 --n_params=$SLURM_ARRAY_TASK_ID
+	srun /home/edoardopedicillo/miniconda3/bin/python3 /home/edoardopedicillo/tesi/2D_gaussian_gamma/quantum_classical_2Dgamma.py --n_epochs=5000 --lr=0.1 --n_params=$SLURM_ARRAY_TASK_ID --iterator=3

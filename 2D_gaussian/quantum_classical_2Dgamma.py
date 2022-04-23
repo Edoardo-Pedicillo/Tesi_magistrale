@@ -206,11 +206,11 @@ def train(d_model, latent_dim, layers, nqubits, training_samples, discriminator,
             else:
                 np.savetxt(f"KLdiv_2Dgaussian_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}", [kl_divergence(hh_real[0].flatten(),hh_fake[0].flatten() ,epsilon=0.01)], newline=' ')
             
-        np.savetxt(f"PARAMS_2Dgaussian_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}", [initial_params.numpy()], newline='')
-        np.savetxt(f"dloss_2Dgaussian_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}", [d_loss], newline='')
-        np.savetxt(f"gloss_2Dgaussian_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}", [g_loss], newline='')
+       #  np.savetxt(f"PARAMS_2Dgaussian_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}", [initial_params.numpy()], newline='')
+       # np.savetxt(f"dloss_2Dgaussian_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}", [d_loss], newline='')
+       # np.savetxt(f"gloss_2Dgaussian_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}", [g_loss], newline='')
         # serialize weights to HDF5
-        discriminator.save_weights(f"discriminator_2Dgaussian_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}.h5")
+       # discriminator.save_weights(f"discriminator_2Dgaussian_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}.h5")
 
 def main(latent_dim, layers, training_samples, n_epochs, batch_samples, lr):
     
