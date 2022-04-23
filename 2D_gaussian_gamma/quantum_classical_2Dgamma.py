@@ -208,7 +208,7 @@ def train(d_model, latent_dim, layers, nqubits, training_samples, discriminator,
             
             if i != 0:
 
-                with open(f"KLdiv_2Dgaussian_gamma_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}_{n_params}", "ab") as f:
+                with open(f"KLdiv_2Dgaussian_gamma_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}_{n_params}_{iterator}", "ab") as f:
                     
                     np.savetxt(f, [kl_divergence(hh_real[0].flatten(),hh_fake[0].flatten() ,epsilon=0.01)], newline=' ')
             
@@ -221,7 +221,7 @@ def train(d_model, latent_dim, layers, nqubits, training_samples, discriminator,
         # serialize weights to HDF5
         #discriminator.save_weights(f"discriminator_2Dgaussian_gamma_different_circuit_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}_{n_params}.h5")
 
-def main(latent_dim, layers, training_samples, n_epochs, batch_samples, lr,n_params,iterator=0):
+def main(latent_dim, layers, training_samples, n_epochs, batch_samples, lr,n_params,iterator):
     
     # define hamiltonian to generate fake samples
     def hamiltonian1():
@@ -273,6 +273,6 @@ if __name__ == "__main__":
     parser.add_argument("--batch_samples", default=128, type=int)
     parser.add_argument("--lr", default=0.5, type=float)
     parser.add_argument("--n_params", default=0, type=int)
-    parser.add_argument("--iterator", default=0, type=int) 
+    parser.add_argument("--iterator", default=0, type=int)
     args = vars(parser.parse_args())
     main(**args)

@@ -161,7 +161,7 @@ def generate_fake_samples(params, latent_dim, samples, circuit, nqubits, layers,
     return X, y
 
 # train the generator and discriminator
-def train(d_model, latent_dim, layers, nqubits, training_samples, discriminator, circuit, n_epochs, samples, lr, hamiltonian1, hamiltonian2):
+def train(d_model, latent_dim, layers, nqubits, training_samples, discriminator, circuit, n_epochs, samples, lr, hamiltonian1, hamiltonian2,iterator):
     d_loss = []
     g_loss = []
     # determine half the size of one batch, for updating the discriminator
@@ -187,7 +187,7 @@ def train(d_model, latent_dim, layers, nqubits, training_samples, discriminator,
         optimizer.apply_gradients([(grads, initial_params)])
         g_loss.append(loss)
        
-        if i%100==0:
+        if i%25==0:
             data=5000
             training_data=5000
             x_real_kl,_ = generate_real_samples(data, s, training_data)
@@ -199,12 +199,12 @@ def train(d_model, latent_dim, layers, nqubits, training_samples, discriminator,
             
             if i != 0:
 
-                with open(f"KLdiv_2Dgaussian_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}", "ab") as f:
+                with open(f"KLdiv_2Dgaussian_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}_{iterator}", "ab") as f:
                     
                     np.savetxt(f, [kl_divergence(hh_real[0].flatten(),hh_fake[0].flatten() ,epsilon=0.01)], newline=' ')
             
             else:
-                np.savetxt(f"KLdiv_2Dgaussian_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}", [kl_divergence(hh_real[0].flatten(),hh_fake[0].flatten() ,epsilon=0.01)], newline=' ')
+                np.savetxt(f"KLdiv_2Dgaussian_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}_{iterator}", [kl_divergence(hh_real[0].flatten(),hh_fake[0].flatten() ,epsilon=0.01)], newline=' ')
             
        #  np.savetxt(f"PARAMS_2Dgaussian_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}", [initial_params.numpy()], newline='')
        # np.savetxt(f"dloss_2Dgaussian_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}", [d_loss], newline='')
@@ -212,7 +212,7 @@ def train(d_model, latent_dim, layers, nqubits, training_samples, discriminator,
         # serialize weights to HDF5
        # discriminator.save_weights(f"discriminator_2Dgaussian_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}.h5")
 
-def main(latent_dim, layers, training_samples, n_epochs, batch_samples, lr):
+def main(latent_dim, layers, training_samples, n_epochs, batch_samples, lr,iterator):
     
     # define hamiltonian to generate fake samples
     def hamiltonian1():
@@ -250,7 +250,7 @@ def main(latent_dim, layers, training_samples, n_epochs, batch_samples, lr):
     # create classical discriminator
     discriminator = define_discriminator()
     # train model
-    train(discriminator, latent_dim, layers, nqubits, training_samples, discriminator, circuit, n_epochs, batch_samples, lr, hamiltonian1, hamiltonian2)
+    train(discriminator, latent_dim, layers, nqubits, training_samples, discriminator, circuit, n_epochs, batch_samples, lr, hamiltonian1, hamiltonian2,iterator)
 
 
 if __name__ == "__main__":
@@ -261,5 +261,6 @@ if __name__ == "__main__":
     parser.add_argument("--n_epochs", default=30000, type=int)
     parser.add_argument("--batch_samples", default=128, type=int)
     parser.add_argument("--lr", default=0.5, type=float)
+    parser.add_argument("--iterator", default=0, type=int) 
     args = vars(parser.parse_args())
     main(**args)

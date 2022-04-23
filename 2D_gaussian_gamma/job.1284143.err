@@ -1,8 +1,0 @@
-OMP: Info #270: omp_set_nested routine deprecated, please use omp_set_max_active_levels instead.
-[Qibo 0.1.7|INFO|2022-04-23 09:33:53]: Using qibojit (numba) backend on /CPU:0
-[Qibo 0.1.7|INFO|2022-04-23 09:33:54]: Using tensorflow backend on /device:CPU:0
-srun: got SIGCONT
-slurmstepd-fermi: error: *** STEP 1284143.0 ON fermi CANCELLED AT 2022-04-23T09:52:17 ***
-slurmstepd-fermi: error: *** JOB 1284143 ON fermi CANCELLED AT 2022-04-23T09:52:17 ***
-srun: error: fermi: task 0: Terminated
-srun: Force Terminated job step 1284143.0

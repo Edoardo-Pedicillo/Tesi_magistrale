@@ -1,8 +1,0 @@
-OMP: Info #270: omp_set_nested routine deprecated, please use omp_set_max_active_levels instead.
-[Qibo 0.1.7|INFO|2022-04-23 09:34:36]: Using qibojit (numba) backend on /CPU:0
-[Qibo 0.1.7|INFO|2022-04-23 09:34:37]: Using tensorflow backend on /device:CPU:0
-srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
-slurmstepd-higgs: error: *** JOB 1284147 ON higgs CANCELLED AT 2022-04-23T09:52:35 ***
-srun: got SIGCONT
-srun: forcing job termination
-slurmstepd-higgs: error: *** STEP 1284147.0 ON higgs CANCELLED AT 2022-04-23T09:52:35 ***
