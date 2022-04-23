@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+from typing import Iterator
 import tensorflow as tf
 import os
 os.environ['CUDA_VISIBLE_DEVICES'] = '-1'
@@ -166,7 +167,7 @@ def generate_fake_samples(params, latent_dim, samples, circuit, nqubits, layers,
     return X, y
 
 # train the generator and discriminator
-def train(d_model, latent_dim, layers, nqubits, training_samples, discriminator, circuit, n_epochs, samples, lr, hamiltonian1, hamiltonian2, n_params):
+def train(d_model, latent_dim, layers, nqubits, training_samples, discriminator, circuit, n_epochs, samples, lr, hamiltonian1, hamiltonian2, n_params,iterator):
     d_loss = []
     g_loss = []
     
@@ -194,7 +195,7 @@ def train(d_model, latent_dim, layers, nqubits, training_samples, discriminator,
         optimizer.apply_gradients([(grads, initial_params)])
         g_loss.append(loss) 
         
-        if i%100==0:
+        if i%25==0:
             data=5000
             training_data=5000
             x_real_kl, _ = generate_real_samples(data, s, training_data)
@@ -212,15 +213,15 @@ def train(d_model, latent_dim, layers, nqubits, training_samples, discriminator,
                     np.savetxt(f, [kl_divergence(hh_real[0].flatten(),hh_fake[0].flatten() ,epsilon=0.01)], newline=' ')
             
             else:
-                np.savetxt(f"KLdiv_2Dgaussian_gamma_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}_{n_params}", [kl_divergence(hh_real[0].flatten(),hh_fake[0].flatten() ,epsilon=0.01)], newline=' ')
+                np.savetxt(f"KLdiv_2Dgaussian_gamma_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}_{n_params}_{iterator}", [kl_divergence(hh_real[0].flatten(),hh_fake[0].flatten() ,epsilon=0.01)], newline=' ')
             
-        np.savetxt(f"PARAMS_2Dgaussian_gamma_different_circuit_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}_{n_params}", [initial_params.numpy()], newline='')
-        np.savetxt(f"dloss_2Dgaussian_gamma_different_circuit_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}_{n_params}", [d_loss], newline='')
-        np.savetxt(f"gloss_2Dgaussian_gamma_different_circuit_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}_{n_params}", [g_loss], newline='')
+        #np.savetxt(f"PARAMS_2Dgaussian_gamma_different_circuit_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}_{n_params}", [initial_params.numpy()], newline='')
+        #np.savetxt(f"dloss_2Dgaussian_gamma_different_circuit_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}_{n_params}", [d_loss], newline='')
+        #np.savetxt(f"gloss_2Dgaussian_gamma_different_circuit_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}_{n_params}", [g_loss], newline='')
         # serialize weights to HDF5
-        discriminator.save_weights(f"discriminator_2Dgaussian_gamma_different_circuit_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}_{n_params}.h5")
+        #discriminator.save_weights(f"discriminator_2Dgaussian_gamma_different_circuit_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}_{n_params}.h5")
 
-def main(latent_dim, layers, training_samples, n_epochs, batch_samples, lr,n_params):
+def main(latent_dim, layers, training_samples, n_epochs, batch_samples, lr,n_params,iterator=0):
     
     # define hamiltonian to generate fake samples
     def hamiltonian1():
@@ -260,7 +261,7 @@ def main(latent_dim, layers, training_samples, n_epochs, batch_samples, lr,n_par
     # create classical discriminator
     discriminator = define_discriminator()
     # train model
-    train(discriminator, latent_dim, layers, nqubits, training_samples, discriminator, circuit, n_epochs, batch_samples, lr, hamiltonian1, hamiltonian2, n_params)
+    train(discriminator, latent_dim, layers, nqubits, training_samples, discriminator, circuit, n_epochs, batch_samples, lr, hamiltonian1, hamiltonian2, n_params,iterator)
 
 
 if __name__ == "__main__":
@@ -272,5 +273,6 @@ if __name__ == "__main__":
     parser.add_argument("--batch_samples", default=128, type=int)
     parser.add_argument("--lr", default=0.5, type=float)
     parser.add_argument("--n_params", default=0, type=int)
+    parser.add_argument("--iterator", default=0, type=int) 
     args = vars(parser.parse_args())
     main(**args)
