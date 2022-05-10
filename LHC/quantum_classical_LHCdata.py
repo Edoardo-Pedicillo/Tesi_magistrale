@@ -58,7 +58,7 @@ def define_discriminator(n_inputs=3, alpha=0.2, dropout=0.2):
 # define the combined generator and discriminator model, for updating the generator
 def define_cost_gan(params, discriminator, latent_dim, samples, circuit, nqubits, layers, hamiltonian1, hamiltonian2, hamiltonian3, n_params):
     # generate fake samples
-    x_fake, y_fake = generate_fake_samples(params, latent_dim, samples, circuit, nqubits, layers, hamiltonian1, hamiltonian2, hamiltonian3)
+    x_fake, y_fake = generate_fake_samples(params, latent_dim, samples, circuit, nqubits, layers, hamiltonian1, hamiltonian2, hamiltonian3,n_params)
     # create inverted labels for the fake samples
     y_fake = np.ones((samples, 1))
     # evaluate discriminator on fake examples
@@ -210,21 +210,21 @@ def main(latent_dim, layers, training_samples, n_epochs, batch_samples, lr,n_par
     # define hamiltonian to generate fake samples
     def hamiltonian1():
         id = [[1, 0], [0, 1]]
-        m0 = hamiltonians.Z(1, numpy=True).matrix
+        m0 = hamiltonians.Z(1).matrix
         m0 = np.kron(id, np.kron(id, m0))
         ham = hamiltonians.Hamiltonian(3, m0)
         return ham
     
     def hamiltonian2():
         id = [[1, 0], [0, 1]]
-        m0 = hamiltonians.Z(1, numpy=True).matrix
+        m0 = hamiltonians.Z(1).matrix
         m0 = np.kron(id, np.kron(m0, id))
         ham = hamiltonians.Hamiltonian(3, m0)
         return ham
     
     def hamiltonian3():
         id = [[1, 0], [0, 1]]
-        m0 = hamiltonians.Z(1, numpy=True).matrix
+        m0 = hamiltonians.Z(1).matrix
         m0 = np.kron(m0, np.kron(id, id))
         ham = hamiltonians.Hamiltonian(3, m0)
         return ham
