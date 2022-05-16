@@ -106,8 +106,10 @@ def set_params(circuit, params, x_input, i, nqubits, layers, latent_dim,n_params
         p.append(fparams[index]*x_input[noise][i] + fparams[index+1])
         index+=2
         noise=(noise+1)%latent_dim
+    
     index=0
     len_params=tot_params-len(fparams)
+    
     for _ in range(int(len_params/2)):
        
         #print(index,params[index],params[index+1])
