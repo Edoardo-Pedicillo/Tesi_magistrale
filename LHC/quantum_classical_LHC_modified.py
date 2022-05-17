@@ -93,7 +93,7 @@ def set_params(circuit, params, x_input, i, nqubits, layers, latent_dim,n_params
 
     circuit.set_parameters(p) 
 
-def load_events(filename, real_samples=10000):
+def load_events(filename,samples=20000):
     init = readInit(filename)
     evs = list(readEvent(filename))
 
@@ -103,12 +103,7 @@ def load_events(filename, real_samples=10000):
          invar[ev, 1] = GetMandelT(evs[ev])
          invar[ev, 2] = GetRapidity(init, evs[ev])
          
-    pt = PowerTransformer()
-    print(pt.fit(invar[:real_samples, :]))
-    print(pt.lambdas_)
-    scaler = MinMaxScaler(feature_range=(-1, 1))
-    print(scaler.fit(pt.transform(invar[:real_samples, :])))
-    return scaler.transform(pt.transform(invar[:real_samples, :]))
+    return invar[:samples, :]
  
 # generate real samples with class labels
 def generate_real_samples(samples, distribution, real_samples):
@@ -181,6 +176,27 @@ def train(d_model, latent_dim, layers, nqubits, training_samples, discriminator,
     evs = list(readEvent('data/ppttbar_10k_events.lhe'))    
     invar = np.zeros((len(evs),3))
     # manually enumerate epochs
+
+    for ev in range(len(evs)):
+        invar[ev, 0] = GetEnergySquared(evs[ev])
+        invar[ev, 1] = GetMandelT(evs[ev])
+        invar[ev, 2] = GetRapidity(init, evs[ev])         
+            
+    pt = PowerTransformer()
+    print(pt.fit(invar[:10000, :]))
+    print(pt.lambdas_)
+    scaler = MinMaxScaler(feature_range=(-1, 1))
+    print(scaler.fit(pt.transform(invar[:10000, :])))
+    x_real = load_events('data/ppttbar_10k_events.lhe')
+    x_real1 = []
+    x_real2 = []
+    x_real3 = []
+
+    for j in range(len(x_real)):
+        x_real1.append(x_real[j][0])
+        x_real2.append(x_real[j][1])
+        x_real3.append(x_real[j][2])
+
     
     for i in range(n_epochs):
         
@@ -199,32 +215,9 @@ def train(d_model, latent_dim, layers, nqubits, training_samples, discriminator,
         optimizer.apply_gradients([(grads, initial_params)])
         g_loss.append(loss)
 
-        if i%25==0:
+        if i%25==0: # Changeee
             
-            x_real = load_events('data/ppttbar_10k_events.lhe')
-            x_real1 = []
-            x_real2 = []
-            x_real3 = []
-
-            for j in range(samples):
-                x_real1.append(x_real[j][0])
-                x_real2.append(x_real[j][1])
-                x_real3.append(x_real[j][2])
-
-            
-            
-            for ev in range(len(evs)):
-                invar[ev, 0] = GetEnergySquared(evs[ev])
-                invar[ev, 1] = GetMandelT(evs[ev])
-                invar[ev, 2] = GetRapidity(init, evs[ev])         
-            
-            pt = PowerTransformer()
-            print(pt.fit(invar[:10000, :]))
-            print(pt.lambdas_)
-            scaler = MinMaxScaler(feature_range=(-1, 1))
-            print(scaler.fit(pt.transform(invar[:10000, :])))
-           
-            
+            print(i)
             x_fake,_ = generate_fake_samples(initial_params, latent_dim, 3000, circuit, nqubits, layers, hamiltonian1, hamiltonian2, hamiltonian3,n_params)
             
            
@@ -234,13 +227,17 @@ def train(d_model, latent_dim, layers, nqubits, training_samples, discriminator,
             x_fake3 = []
            
 
-            for j in range(samples):
+            for j in range(len(x_fake)):
                 x_fake1.append(x_fake[j][0])
                 x_fake2.append(x_fake[j][1])
                 x_fake3.append(x_fake[j][2])
-
+            
+            
             bins_real=np.histogram(x_real1, bins = bins)
             bins_fake=np.histogram(x_fake1, bins = bins_real[1])
+            #print(x_fake1)
+            #print(x_real1)
+            #print(bins_real,bins_fake)
             kl1=kl_divergence(bins_real[0],bins_fake[0],epsilon=0.1)
             
             bins_real=np.histogram(x_real2, bins = bins)
