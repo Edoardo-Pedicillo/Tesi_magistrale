@@ -1,0 +1,530 @@
+My SLURM_ARRAY_TASK_ID:  12
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
+[-0.86655282  2.47191242  1.00564242]
+MinMaxScaler(feature_range=(-1, 1))
+PowerTransformer()
