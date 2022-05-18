@@ -1,0 +1,17 @@
+OMP: Info #270: omp_set_nested routine deprecated, please use omp_set_max_active_levels instead.
+[Qibo 0.1.7|INFO|2022-05-17 22:33:10]: Using qibojit (numba) backend on /CPU:0
+[Qibo 0.1.7|INFO|2022-05-17 22:33:13]: Using tensorflow backend on /device:CPU:0
+[Qibo 0.1.7|WARNING|2022-05-17 22:33:13]: `set_threads` is not supported by the tensorflow backend. Please use tensorflow's thread setters: `tf.config.threading.set_inter_op_parallelism_threads` or `tf.config.threading.set_intra_op_parallelism_threads` to switch the number of threads.
+Traceback (most recent call last):
+  File "/home/edoardopedicillo/tesi/LHC/quantum_classical_LHC_modified.py", line 337, in <module>
+    main(**args)
+  File "/home/edoardopedicillo/tesi/LHC/quantum_classical_LHC_modified.py", line 323, in main
+    train(discriminator, latent_dim, layers, nqubits, training_samples, discriminator, circuit, n_epochs, batch_samples, lr, hamiltonian1, hamiltonian2, hamiltonian3,n_params,iterator)
+  File "/home/edoardopedicillo/tesi/LHC/quantum_classical_LHC_modified.py", line 215, in train
+    optimizer.apply_gradients([(grads, initial_params)])
+  File "/home/edoardopedicillo/miniconda3/lib/python3.7/site-packages/tensorflow/python/keras/optimizer_v2/optimizer_v2.py", line 598, in apply_gradients
+    grads_and_vars = optimizer_utils.filter_empty_gradients(grads_and_vars)
+  File "/home/edoardopedicillo/miniconda3/lib/python3.7/site-packages/tensorflow/python/keras/optimizer_v2/utils.py", line 79, in filter_empty_gradients
+    ([v.name for _, v in grads_and_vars],))
+ValueError: No gradients provided for any variable: ['Variable:0'].
+srun: error: wu: task 0: Exited with exit code 1
