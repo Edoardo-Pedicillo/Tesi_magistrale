@@ -249,7 +249,7 @@ def train(d_model, latent_dim, layers, nqubits, training_samples, discriminator,
             kl3=kl_divergence(bins_real[0],bins_fake[0],epsilon=0.1)
             
             if i != 0:
-
+                
                 with open(f"KLdiv_LHC_s_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}_{n_params}_{iterator}", "ab") as f:
                     
                     np.savetxt(f, [kl1], newline=' ')
@@ -261,11 +261,15 @@ def train(d_model, latent_dim, layers, nqubits, training_samples, discriminator,
                 with open(f"KLdiv_LHC_y_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}_{n_params}_{iterator}", "ab") as f:
                     
                     np.savetxt(f, [kl3], newline=' ')
-            
+                
+                with open(f"bins_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}_{n_params}_{iterator}", "ab") as f:
+                    
+                    np.savetxt(f, bins_fake, newline=' ')
             else:
                 np.savetxt(f"KLdiv_LHC_s_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}_{n_params}_{iterator}", [kl1], newline=' ')
                 np.savetxt(f"KLdiv_LHC_t_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}_{n_params}_{iterator}", [kl2], newline=' ')
                 np.savetxt(f"KLdiv_LHC_y_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}_{n_params}_{iterator}", [kl3], newline=' ')
+                np.savetxt(f"bins_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}_{n_params}_{iterator}", bins_fake, newline=' ')
 
         # np.savetxt(f"PARAMS_transfer_learning_LHCdata_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}_{n_params}", [initial_params.numpy()], newline='')
         # np.savetxt(f"dloss_transfer_learning_LHCdata_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}_{n_params}", [d_loss], newline='')
