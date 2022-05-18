@@ -1,0 +1,25 @@
+OMP: Info #270: omp_set_nested routine deprecated, please use omp_set_max_active_levels instead.
+[Qibo 0.1.7|INFO|2022-05-18 07:54:28]: Using qibojit (numba) backend on /CPU:0
+[Qibo 0.1.7|INFO|2022-05-18 07:54:32]: Using tensorflow backend on /device:CPU:0
+[Qibo 0.1.7|WARNING|2022-05-18 07:54:32]: `set_threads` is not supported by the tensorflow backend. Please use tensorflow's thread setters: `tf.config.threading.set_inter_op_parallelism_threads` or `tf.config.threading.set_intra_op_parallelism_threads` to switch the number of threads.
+/home/edoardopedicillo/miniconda3/lib/python3.7/site-packages/numpy/lib/npyio.py:1378: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify 'dtype=object' when creating the ndarray.
+  X = np.asarray(X)
+Traceback (most recent call last):
+  File "/home/edoardopedicillo/miniconda3/lib/python3.7/site-packages/numpy/lib/npyio.py", line 1435, in savetxt
+    v = format % tuple(row) + newline
+TypeError: only size-1 arrays can be converted to Python scalars
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/edoardopedicillo/tesi/LHC/quantum_classical_LHC_modified.py", line 341, in <module>
+    main(**args)
+  File "/home/edoardopedicillo/tesi/LHC/quantum_classical_LHC_modified.py", line 327, in main
+    train(discriminator, latent_dim, layers, nqubits, training_samples, discriminator, circuit, n_epochs, batch_samples, lr, hamiltonian1, hamiltonian2, hamiltonian3,n_params,iterator)
+  File "/home/edoardopedicillo/tesi/LHC/quantum_classical_LHC_modified.py", line 272, in train
+    np.savetxt(f"bins_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}_{n_params}_{iterator}", bins_fake, newline=' ')
+  File "<__array_function__ internals>", line 6, in savetxt
+  File "/home/edoardopedicillo/miniconda3/lib/python3.7/site-packages/numpy/lib/npyio.py", line 1439, in savetxt
+    % (str(X.dtype), format)) from e
+TypeError: Mismatch between array dtype ('object') and format specifier ('%.18e')
+srun: error: dyson: task 0: Exited with exit code 1
