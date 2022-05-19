@@ -1,0 +1,22 @@
+OMP: Info #270: omp_set_nested routine deprecated, please use omp_set_max_active_levels instead.
+[Qibo 0.1.7|INFO|2022-05-19 21:11:43]: Using qibojit (numba) backend on /CPU:0
+[Qibo 0.1.7|INFO|2022-05-19 21:11:51]: Using tensorflow backend on /device:CPU:0
+[Qibo 0.1.7|WARNING|2022-05-19 21:11:51]: `set_threads` is not supported by the tensorflow backend. Please use tensorflow's thread setters: `tf.config.threading.set_inter_op_parallelism_threads` or `tf.config.threading.set_intra_op_parallelism_threads` to switch the number of threads.
+Traceback (most recent call last):
+  File "/home/edoardopedicillo/tesi/LHC/qc_LHC.py", line 347, in <module>
+    main(**args)
+  File "/home/edoardopedicillo/tesi/LHC/qc_LHC.py", line 333, in main
+    train(discriminator, latent_dim, layers, nqubits, training_samples, discriminator, circuit, n_epochs, batch_samples, lr, hamiltonian1, hamiltonian2, hamiltonian3,n_params,iterator)
+  File "/home/edoardopedicillo/tesi/LHC/qc_LHC.py", line 215, in train
+    discriminator.save_weights(f"discriminator_LHCdata_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}_{n_params}.h5")
+  File "/home/edoardopedicillo/miniconda3/lib/python3.7/site-packages/tensorflow/python/keras/engine/training.py", line 2107, in save_weights
+    with h5py.File(filepath, 'w') as f:
+  File "/home/edoardopedicillo/miniconda3/lib/python3.7/site-packages/h5py/_hl/files.py", line 408, in __init__
+    swmr=swmr)
+  File "/home/edoardopedicillo/miniconda3/lib/python3.7/site-packages/h5py/_hl/files.py", line 179, in make_fid
+    fid = h5f.create(name, h5f.ACC_TRUNC, fapl=fapl, fcpl=fcpl)
+  File "h5py/_objects.pyx", line 54, in h5py._objects.with_phil.wrapper
+  File "h5py/_objects.pyx", line 55, in h5py._objects.with_phil.wrapper
+  File "h5py/h5f.pyx", line 108, in h5py.h5f.create
+OSError: Unable to create file (unable to lock file, errno = 11, error message = 'Resource temporarily unavailable')
+srun: error: wick: task 0: Exited with exit code 1
