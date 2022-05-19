@@ -271,9 +271,9 @@ def train(d_model, latent_dim, layers, nqubits, training_samples, discriminator,
                 np.savetxt(f"KLdiv_LHC_y_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}_{n_params}_{iterator}", [kl3], newline=' ')
                 np.savetxt(f"bins_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}_{n_params}_{iterator}", bins_fake[0], newline=' ')
 
-        # np.savetxt(f"PARAMS_transfer_learning_LHCdata_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}_{n_params}", [initial_params.numpy()], newline='')
-        # np.savetxt(f"dloss_transfer_learning_LHCdata_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}_{n_params}", [d_loss], newline='')
-        # np.savetxt(f"gloss_transfer_learning_LHCdata_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}_{n_params}", [g_loss], newline='')
+        np.savetxt(f"PARAMS_transfer_learning_LHCdata_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}_{n_params}_{iterator}", [initial_params.numpy()], newline='')
+        np.savetxt(f"dloss_transfer_learning_LHCdata_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}_{n_params}_{iterator}", [d_loss], newline='')
+        np.savetxt(f"gloss_transfer_learning_LHCdata_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}_{n_params}_{iterator}", [g_loss], newline='')
         # serialize weights to HDF5
         #discriminator.save_weights(f"discriminator_LHCdata_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}_{n_params}.h5")
 
