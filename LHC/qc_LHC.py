@@ -212,7 +212,7 @@ def train(d_model, latent_dim, layers, nqubits, training_samples, discriminator,
         np.savetxt(f"dloss_transfer_learning_LHCdata_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}_{n_params}_{iterator}", [d_loss], newline='')
         np.savetxt(f"gloss_transfer_learning_LHCdata_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}_{n_params}_{iterator}", [g_loss], newline='')
         # serialize weights to HDF5
-        discriminator.save_weights(f"discriminator_LHCdata_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}_{n_params}.h5")
+        discriminator.save_weights(f"discriminator_LHCdata_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}_{n_params}_{iterator}.h5")
         
         if i%25==0: # Change
             
