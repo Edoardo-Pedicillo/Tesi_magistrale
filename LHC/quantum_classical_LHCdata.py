@@ -1,12 +1,14 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+from lib2to3.pgen2.token import NEWLINE
 import tensorflow as tf
 import os
 os.environ['CUDA_VISIBLE_DEVICES'] = '-1'
 
 # train a quantum-classical generative adversarial network on LHC data
 import numpy as np
+import time
 from numpy.random import randn
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.optimizers import Adadelta
@@ -186,6 +188,8 @@ def train(d_model, latent_dim, layers, nqubits, training_samples, discriminator,
     # prepare real samples
     s = load_events('data/ppttbar_10k_events.lhe', training_samples)
     # manually enumerate epochs
+    start=time.time()
+    t = []
     for i in range(n_epochs):
         # prepare real samples
         x_real, y_real = generate_real_samples(half_samples, s, training_samples)
@@ -201,11 +205,13 @@ def train(d_model, latent_dim, layers, nqubits, training_samples, discriminator,
         grads = tape.gradient(loss, initial_params)
         optimizer.apply_gradients([(grads, initial_params)])
         g_loss.append(loss)
-        np.savetxt(f"PARAMS_transfer_learning_LHCdata_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}_{n_params}", [initial_params.numpy()], newline='')
-        np.savetxt(f"dloss_transfer_learning_LHCdata_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}_{n_params}", [d_loss], newline='')
-        np.savetxt(f"gloss_transfer_learning_LHCdata_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}_{n_params}", [g_loss], newline='')
+        #np.savetxt(f"PARAMS_transfer_learning_LHCdata_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}_{n_params}", [initial_params.numpy()], newline='')
+        #np.savetxt(f"dloss_transfer_learning_LHCdata_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}_{n_params}", [d_loss], newline='')
+        #np.savetxt(f"gloss_transfer_learning_LHCdata_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}_{n_params}", [g_loss], newline='')
         # serialize weights to HDF5
-        discriminator.save_weights(f"discriminator_LHCdata_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}_{n_params}.h5")
+        #discriminator.save_weights(f"discriminator_LHCdata_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}_{n_params}.h5")
+        t.append(time.time()-start)
+        np.savetxt("time_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}_{n_params}",[t],newline='')
 
 def main(latent_dim, layers, training_samples, n_epochs, batch_samples, lr,n_params):
     
