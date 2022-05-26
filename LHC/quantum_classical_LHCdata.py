@@ -211,7 +211,7 @@ def train(d_model, latent_dim, layers, nqubits, training_samples, discriminator,
         # serialize weights to HDF5
         #discriminator.save_weights(f"discriminator_LHCdata_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}_{n_params}.h5")
         t.append(time.time()-start)
-        np.savetxt("time_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}_{n_params}",[t],newline='')
+        np.savetxt(f"time_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}_{n_params}",[t],newline='')
 
 def main(latent_dim, layers, training_samples, n_epochs, batch_samples, lr,n_params):
     
