@@ -1,0 +1,15 @@
+OMP: Info #270: omp_set_nested routine deprecated, please use omp_set_max_active_levels instead.
+[Qibo 0.1.7|INFO|2022-05-31 08:47:42]: Using qibojit (numba) backend on /CPU:0
+[Qibo 0.1.7|INFO|2022-05-31 08:47:51]: Using tensorflow backend on /device:CPU:0
+[Qibo 0.1.7|WARNING|2022-05-31 08:47:51]: `set_threads` is not supported by the tensorflow backend. Please use tensorflow's thread setters: `tf.config.threading.set_inter_op_parallelism_threads` or `tf.config.threading.set_intra_op_parallelism_threads` to switch the number of threads.
+
+Traceback (most recent call last):
+  File "/home/edoardopedicillo/tesi/prova/cycleGAN_5.py", line 334, in <module>
+    main(**args)
+  File "/home/edoardopedicillo/tesi/prova/cycleGAN_5.py", line 322, in main
+    train(discriminator, discriminator1,latent_dim, layers, nqubits, training_samples, circuit, circuit1, n_epochs, batch_samples, lr, hamiltonian1)
+  File "/home/edoardopedicillo/tesi/prova/cycleGAN_5.py", line 262, in train
+    x_real1, y_real1 = generate_real_samples(half_samples, t, training_samples)
+  File "/home/edoardopedicillo/tesi/prova/cycleGAN_5.py", line 181, in generate_real_samples
+    X = distribution[idx,:]
+TypeError: list indices must be integers or slices, not tuple

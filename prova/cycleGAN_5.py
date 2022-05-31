@@ -241,7 +241,7 @@ def train(d_model, d_model1, latent_dim, layers, nqubits, training_samples, circ
 
     t = generate_training_real_samples(training_samples,input = 1) 
     start = time.time()
-    t=[]
+    tp=[]
     # manually enumerate epochs
     for i in range(n_epochs):
         # prepare real samples
@@ -277,13 +277,13 @@ def train(d_model, d_model1, latent_dim, layers, nqubits, training_samples, circ
         optimizer.apply_gradients([(grads1, initial_params1)])
         g_loss.append(loss)
 
-        t.append(time.time()-start)
+        tp.append(time.time()-start)
         np.savetxt(f"PARAMS_cGAN_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}", [initial_params.numpy()], newline='')
         np.savetxt(f"dloss_cGAN_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}", [d_loss], newline='')
         np.savetxt(f"gloss_cGAN_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}", [g_loss], newline='')
         np.savetxt(f"PARAMS1_cGAN_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}", [initial_params.numpy()], newline='')
         np.savetxt(f"dloss1_cGAN_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}", [d_loss1], newline='')
-        np.savetxt(f"time_cGAN_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}", [t], newline='')
+        np.savetxt(f"time_cGAN_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}", [tp], newline='')
         #np.savetxt(f"gloss_cGAN1_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}", [g_loss], newline='')
         # serialize weights to HDF5
         #discriminator.save_weights(f"discriminator_1Dgamma_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}.h5")
