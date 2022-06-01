@@ -67,18 +67,18 @@ def define_cycle_cost_gan(params0,params1, latent_dim, samples, circuit0,circuit
     loss_cycle0 = []
     loss_cycle1 = []
     for i in range(1):
-        data1 = np.random.logistic(0,0.13,latent_dim*(latent_dim*samples))#generate_training_real_samples(samples*latent_dim,input=0) # logistic
-        #data1 = generate_training_real_samples(samples*latent_dim,input=1) # gamma 
+        data1 = np.random.logistic(0,0.13,latent_dim*(latent_dim*samples))# logistic
+       
         data0 = np.random.gamma(1., size=(latent_dim*samples)*latent_dim)
         data0 = data0/4 - 1
         data0=np.reshape(data0,(latent_dim*samples,latent_dim) )
         data1=np.reshape(data1,(latent_dim*samples,latent_dim) )
 
-        #print("data0",data0.shape)
+       
         # data0 are used as input for the generator0 and the output distribution is the input of generator1, data0 and the output of generator1 must be similar
-        #print(samples)
+        
         generator0_output, _ = generate_fake_samples(params0, latent_dim, samples*latent_dim, circuit0, nqubits, layers, hamiltonian1,0,x_input=data0)
-        #print(type(generator0_output))
+       
         if i == 0:
             plt.figure(figsize=(10,10))
             
@@ -94,10 +94,10 @@ def define_cycle_cost_gan(params0,params1, latent_dim, samples, circuit0,circuit
         output0=generator1_output
         
         data0=np.reshape(data0,(latent_dim**2,samples) )[0]
-        #print(len(data0))
+        
         datamin = min(data0.min(),output0.numpy().min())
         datamax = max(data0.max(),output0.numpy().max())
-        #print(datamax,datamin)
+       
         bins=np.arange(datamin,datamax,(datamax-datamin)/20)
         bins0 = np.histogram(data0,bins=bins)
         bins_out = np.histogram(output0.numpy(),bins=bins)
@@ -191,10 +191,10 @@ def generate_latent_points(latent_dim, samples,input):
         x_input = x_input/4 - 1
     elif input == 1:
         x_input=np.random.logistic(0, 0.13, latent_dim*samples)
-    #x_input = randn(latent_dim * samples)
+    
     # reshape into a batch of inputs for the network
     x_input = x_input.reshape(samples, latent_dim)
-   #print("AAAAAA ",x_input.shape)
+   
     return x_input
  
 # use the generator to generate fake examples, with class labels
@@ -203,18 +203,15 @@ def generate_fake_samples(params, latent_dim, samples, circuit, nqubits, layers,
 
     
     if len(x_input) == 0:
-        #print("prova2")
+        
         x_input = generate_latent_points(latent_dim, samples,input)
-    #x_input = x_input.reshape(samples, latent_dim)
+    
     x_input = np.transpose(x_input)
     # generator outputs
     X = []
     # quantum generator circuit
-    #print("x_input",x_input.shape)
-    #print(samples)
     for i in range(samples):
-        #print("pppppppppp: ",x_input)
-        #print("sampl ", samples,x_input.shape)
+        
         set_params(circuit, params, x_input, i, nqubits, layers, latent_dim)
         circuit_execute = circuit.execute()
         X.append(hamiltonian1.expectation(circuit_execute))
@@ -254,10 +251,6 @@ def train(d_model, d_model1, latent_dim, layers, nqubits, training_samples, circ
         d_loss_real, _ = d_model.train_on_batch(x_real, y_real)
         d_loss_fake, _ = d_model.train_on_batch(x_fake, y_fake)
         d_loss.append((d_loss_real + d_loss_fake)/2)
-        
-        # serialize weights to HDF5
-        #discriminator.save_weights(f"discriminator_1Dgamma_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}.h5")
-
         
         x_real1, y_real1 = generate_real_samples(half_samples, t, training_samples)
         # prepare fake examples
