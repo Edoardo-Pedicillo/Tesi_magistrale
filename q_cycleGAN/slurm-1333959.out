@@ -1,4 +1,5 @@
 OMP: Info #270: omp_set_nested routine deprecated, please use omp_set_max_active_levels instead.
-[Qibo 0.1.7|INFO|2022-05-27 16:48:28]: Using qibojit (numba) backend on /CPU:0
-[Qibo 0.1.7|INFO|2022-05-27 16:48:39]: Using tensorflow backend on /device:CPU:0
-[Qibo 0.1.7|WARNING|2022-05-27 16:48:39]: `set_threads` is not supported by the tensorflow backend. Please use tensorflow's thread setters: `tf.config.threading.set_inter_op_parallelism_threads` or `tf.config.threading.set_intra_op_parallelism_threads` to switch the number of threads.
+[Qibo 0.1.7|INFO|2022-06-01 09:29:26]: Using qibojit (numba) backend on /CPU:0
+[Qibo 0.1.7|INFO|2022-06-01 09:29:38]: Using tensorflow backend on /device:CPU:0
+[Qibo 0.1.7|WARNING|2022-06-01 09:29:38]: `set_threads` is not supported by the tensorflow backend. Please use tensorflow's thread setters: `tf.config.threading.set_inter_op_parallelism_threads` or `tf.config.threading.set_intra_op_parallelism_threads` to switch the number of threads.
+slurmstepd-boltzmann: error: *** JOB 1333959 ON boltzmann CANCELLED AT 2022-06-01T10:18:13 ***
