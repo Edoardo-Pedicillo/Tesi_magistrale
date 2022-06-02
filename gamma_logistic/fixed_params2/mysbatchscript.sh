@@ -11,4 +11,4 @@
 #SBATCH --jobname="example job" # a nice readable name to give your job so you know what it is when you see it in the queue, instead of just numbers
 	
     export NUMBA_NUM_THREADS=1
-	srun /home/edoardopedicillo/miniconda3/bin/python3 /home/edoardopedicillo/gamma_logistic/fixed_params2/quantum_classical_1Dgamma.py --n_epochs=2000 --lr=0.1 --nparams=$SLURM_ARRAY_TASK_ID
+	srun /home/edoardopedicillo/miniconda3/bin/python3 /home/edoardopedicillo/tesi/gamma_logistic/fixed_params2/quantum_classical_1Dgamma.py --n_epochs=2000 --lr=0.1 --nparams=$SLURM_ARRAY_TASK_ID
