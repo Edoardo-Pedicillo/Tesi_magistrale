@@ -3,3 +3,4 @@ OMP: Info #270: omp_set_nested routine deprecated, please use omp_set_max_active
 [Qibo 0.1.7|INFO|2022-06-01 09:29:38]: Using tensorflow backend on /device:CPU:0
 [Qibo 0.1.7|WARNING|2022-06-01 09:29:38]: `set_threads` is not supported by the tensorflow backend. Please use tensorflow's thread setters: `tf.config.threading.set_inter_op_parallelism_threads` or `tf.config.threading.set_intra_op_parallelism_threads` to switch the number of threads.
 slurmstepd-boltzmann: error: *** JOB 1338382 ON boltzmann CANCELLED AT 2022-06-01T10:18:13 ***
+/storage/local/slurm-llnl/lib/slurmd/job1338382/slurm_script: line 6: 31891 Killed                  /home/edoardopedicillo/miniconda3/bin/python3 /home/edoardopedicillo/tesi/prova/cycleGAN_5.py
