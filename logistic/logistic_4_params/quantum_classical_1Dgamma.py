@@ -174,8 +174,8 @@ def train(d_model, latent_dim, layers, nqubits, training_samples, discriminator,
         g_loss.append(loss)
         np.savetxt(f"PARAMS_1Dlogistic_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}_{n_epochs}_{iterator}", [initial_params.numpy()], newline='')
         np.savetxt(f"dloss_1Dlogistic_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}_{n_epochs}_{iterator}", [d_loss], newline='')
-        np.savetxt(f"gloss_1Dlogistic_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}_{n_epochs}__{iterator}", [g_loss], newline='')
-        np.savetxt(f"time_1Dlogistic_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}_{n_epochs}", [time.time()-start], newline='')
+        np.savetxt(f"gloss_1Dlogistic_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}_{n_epochs}_{iterator}", [g_loss], newline='')
+        np.savetxt(f"time_1Dlogistic_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}_{n_epochs}_{iterator}", [time.time()-start], newline='')
         # serialize weights to HDF5
         #discriminator.save_weights(f"discriminator_1Dlogistic_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}_{n_epochs}.h5")
         if i%25 == 0:
