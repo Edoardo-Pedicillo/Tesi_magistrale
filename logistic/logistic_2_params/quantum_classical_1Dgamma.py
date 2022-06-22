@@ -120,11 +120,30 @@ def generate_fake_samples(params, latent_dim, samples, circuit, nqubits, layers,
     y = np.zeros((samples, 1))
     return X, y
 
+def kl_divergence(bins_real, bins_fake,epsilon):
+    
+    epsilon=0.1
+    prob_real=[]
+    prob_fake=[]
+    for i in range (len(bins_real)):
+        prob_real.append(bins_real[i]+epsilon)
+        prob_fake.append(epsilon+bins_fake[i])
+
+    #print(prob_fake,prob_real)  
+
+    prob_real=prob_real/sum(prob_real) # probability for each bin (Normalization)
+    prob_fake=prob_fake/sum(prob_fake)
+
+   
+    return sum(prob_real[i] * np.log(prob_real[i]/prob_fake[i]) for i in range(len(prob_real)))# Convergence problem if a[i] or b[i] equals zero. 
+                                                            #I add a little quantity to each bin to avoid problems
+   
 
 # train the generator and discriminator
-def train(d_model, latent_dim, layers, nqubits, training_samples, discriminator, circuit, n_epochs, samples, lr, hamiltonian1):
+def train(d_model, latent_dim, layers, nqubits, training_samples, discriminator, circuit, n_epochs, samples, lr, hamiltonian1,iterator):
     d_loss = []
     g_loss = []
+    
     # determine half the size of one batch, for updating the discriminator
     half_samples = int(samples / 2)
     initial_params = tf.Variable(np.random.uniform(-0.15, 0.15, 4*layers*nqubits + 2*nqubits))
@@ -149,14 +168,34 @@ def train(d_model, latent_dim, layers, nqubits, training_samples, discriminator,
         grads = tape.gradient(loss, initial_params)
         optimizer.apply_gradients([(grads, initial_params)])
         g_loss.append(loss)
-        np.savetxt(f"PARAMS_1Dlogistic_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}_{n_epochs}", [initial_params.numpy()], newline='')
-        np.savetxt(f"dloss_1Dlogistic_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}_{n_epochs}", [d_loss], newline='')
-        np.savetxt(f"gloss_1Dlogistic_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}_{n_epochs}", [g_loss], newline='')
-        np.savetxt(f"time_1Dlogistic_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}_{n_epochs}", [time.time()-start], newline='')
+        np.savetxt(f"PARAMS_1Dlogistic_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}_{n_epochs}_{iterator}", [initial_params.numpy()], newline='')
+        np.savetxt(f"dloss_1Dlogistic_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}_{n_epochs}_{iterator}", [d_loss], newline='')
+        np.savetxt(f"gloss_1Dlogistic_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}_{n_epochs}_{iterator}", [g_loss], newline='')
+        np.savetxt(f"time_1Dlogistic_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}_{n_epochs}_{iterator}", [time.time()-start], newline='')
+        
+        if i%25 == 0:
+            data=5000
+            
+            x_real_kl, _ = generate_real_samples(data, s, training_samples)
+            # prepare fake examples
+            x_fake_kl, _ = generate_fake_samples(initial_params, latent_dim, data, circuit, nqubits, layers, hamiltonian1)
+            
+            hh_real = np.histogram(x_real_kl,  bins=100)
+            hh_fake = np.histogram(x_fake_kl,  bins=hh_real[1])
+            
+            if i != 0:
+
+                with open(f"KLdiv_1Dgamma_logistic_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}_{iterator}", "ab") as f:
+                    
+                    np.savetxt(f, [kl_divergence(hh_real[0],hh_fake[0] ,epsilon=0.01)], newline=' ')
+            
+            else:
+                np.savetxt(f"KLdiv_1Dgamma_logistic_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}_{iterator}", [kl_divergence(hh_real[0],hh_fake[0] ,epsilon=0.01)], newline=' ')
+            
         # serialize weights to HDF5
         discriminator.save_weights(f"discriminator_1Dlogistic_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}_{n_epochs}.h5")
 
-def main(latent_dim, layers, training_samples, n_epochs, batch_samples, lr):
+def main(latent_dim, layers, training_samples, n_epochs, batch_samples, lr,iterator):
     
     # define hamiltonian to generate fake samples
     def hamiltonian1():
@@ -179,7 +218,7 @@ def main(latent_dim, layers, training_samples, n_epochs, batch_samples, lr):
     # create classical discriminator
     discriminator = define_discriminator()
     # train model
-    train(discriminator, latent_dim, layers, nqubits, training_samples, discriminator, circuit, n_epochs, batch_samples, lr, hamiltonian1)
+    train(discriminator, latent_dim, layers, nqubits, training_samples, discriminator, circuit, n_epochs, batch_samples, lr, hamiltonian1,iterator)
 
 
 if __name__ == "__main__":
@@ -190,5 +229,6 @@ if __name__ == "__main__":
     parser.add_argument("--n_epochs", default=2000, type=int)
     parser.add_argument("--batch_samples", default=128, type=int)
     parser.add_argument("--lr", default=0.1, type=float)
+    parser.add_argument("--iterator", default=0, type=int)
     args = vars(parser.parse_args())
     main(**args)
