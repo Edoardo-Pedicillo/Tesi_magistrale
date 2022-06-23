@@ -193,7 +193,7 @@ def train(d_model, latent_dim, layers, nqubits, training_samples, discriminator,
                 np.savetxt(f"KLdiv_1Dgamma_logistic_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}_{iterator}", [kl_divergence(hh_real[0],hh_fake[0] ,epsilon=0.01)], newline=' ')
             
         # serialize weights to HDF5
-        discriminator.save_weights(f"discriminator_1Dlogistic_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}_{n_epochs}.h5")
+        #discriminator.save_weights(f"discriminator_1Dlogistic_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}_{n_epochs}.h5")
 
 def main(latent_dim, layers, training_samples, n_epochs, batch_samples, lr,iterator):
     

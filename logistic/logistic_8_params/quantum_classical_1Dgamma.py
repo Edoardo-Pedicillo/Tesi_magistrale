@@ -170,15 +170,26 @@ def train(d_model, latent_dim, layers, nqubits, training_samples, discriminator,
         np.savetxt(f"time_1Dlogistic_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}_{n_epochs}_{iterator}", [time.time()-start], newline='')
         # serialize weights to HDF5
         #discriminator.save_weights(f"discriminator_1Dlogistic_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}_{n_epochs}.h5")
-        if i != 0:
+        
+        if i%25 == 0:
+            data=5000
+            
+            x_real_kl, _ = generate_real_samples(data, s, training_samples)
+            # prepare fake examples
+            x_fake_kl, _ = generate_fake_samples(initial_params, latent_dim, data, circuit, nqubits, layers, hamiltonian1)
+            
+            hh_real = np.histogram(x_real_kl,  bins=100)
+            hh_fake = np.histogram(x_fake_kl,  bins=hh_real[1])
+            
+            if i != 0:
 
                 with open(f"KLdiv_1Dgamma_logistic_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}_{iterator}", "ab") as f:
                     
                     np.savetxt(f, [kl_divergence(hh_real[0],hh_fake[0] ,epsilon=0.01)], newline=' ')
             
-        else:
-            np.savetxt(f"KLdiv_1Dgamma_logistic_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}_{iterator}", [kl_divergence(hh_real[0],hh_fake[0] ,epsilon=0.01)], newline=' ')
-        
+            else:
+                np.savetxt(f"KLdiv_1Dgamma_logistic_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}_{iterator}", [kl_divergence(hh_real[0],hh_fake[0] ,epsilon=0.01)], newline=' ')
+            
         
 def main(latent_dim, layers, training_samples, n_epochs, batch_samples, lr, iterator):
     
