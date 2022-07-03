@@ -80,12 +80,11 @@ def set_params(circuit, params, x_input, i, nqubits, layers, latent_dim):
     p = []
     index = 0
     noise = 0
-    
+    p.append(params[index]*x_input[noise][i] + params[index+1])
+    index+=2
+    noise=(noise+1)%latent_dim 
     for l in range(layers):
         for q in range(nqubits):
-            p.append(params[index]*x_input[noise][i] + params[index+1])
-            index+=2
-            noise=(noise+1)%latent_dim
             p.append(params[index]*x_input[noise][i] + params[index+1])
             index+=2
             noise=(noise+1)%latent_dim
@@ -167,7 +166,7 @@ def train(d_model, latent_dim, layers, nqubits, training_samples, discriminator,
     g_loss = []
     # determine half the size of one batch, for updating the discriminator
     half_samples = int(samples / 2)
-    initial_params = tf.Variable(np.random.uniform(-0.15, 0.15, 12))#4*layers*nqubits + 2*nqubits + 2*layers))
+    initial_params = tf.Variable(np.random.uniform(-0.15, 0.15, 10))#4*layers*nqubits + 2*nqubits + 2*layers))
     optimizer = tf.optimizers.Adadelta(learning_rate=lr)
     # prepare real samples
     s = generate_training_real_samples(training_samples)
