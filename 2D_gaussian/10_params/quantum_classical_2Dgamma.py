@@ -242,9 +242,10 @@ def main(latent_dim, layers, training_samples, n_epochs, batch_samples, lr,itera
    
     # create quantum generator
     circuit = models.Circuit(nqubits)
+    circuit.add(gates.RY(1, 0))
     for l in range(layers):
         for q in range(nqubits):
-            circuit.add(gates.RY(q, 0))
+            #circuit.add(gates.RY(q, 0))
             circuit.add(gates.RZ(q, 0))
         
         #circuit.add(gates.CRY(0, 1, 0))
