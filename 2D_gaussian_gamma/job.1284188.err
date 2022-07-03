@@ -1,3 +1,0 @@
-OMP: Info #270: omp_set_nested routine deprecated, please use omp_set_max_active_levels instead.
-[Qibo 0.1.7|INFO|2022-04-23 10:04:42]: Using qibojit (numba) backend on /CPU:0
-[Qibo 0.1.7|INFO|2022-04-23 10:04:43]: Using tensorflow backend on /device:CPU:0

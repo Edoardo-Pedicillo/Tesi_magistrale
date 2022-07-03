@@ -4,6 +4,7 @@
 from typing import Iterator
 import tensorflow as tf
 import os
+import time 
 os.environ['CUDA_VISIBLE_DEVICES'] = '-1'
 
 # train a quantum-classical generative adversarial network on LHC data
@@ -178,6 +179,8 @@ def train(d_model, latent_dim, layers, nqubits, training_samples, discriminator,
     # prepare real samples
     s = generate_training_real_samples(training_samples)
     # manually enumerate epochs
+    start=time.time()
+    t = []
     for i in range(n_epochs):
         # prepare real samples
         x_real, y_real = generate_real_samples(half_samples, s, training_samples)
@@ -215,11 +218,13 @@ def train(d_model, latent_dim, layers, nqubits, training_samples, discriminator,
             else:
                 np.savetxt(f"KLdiv_2Dgaussian_gamma_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}_{n_params}_{iterator}", [kl_divergence(hh_real[0].flatten(),hh_fake[0].flatten() ,epsilon=0.01)], newline=' ')
             
-        #np.savetxt(f"PARAMS_2Dgaussian_gamma_different_circuit_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}_{n_params}", [initial_params.numpy()], newline='')
-        #np.savetxt(f"dloss_2Dgaussian_gamma_different_circuit_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}_{n_params}", [d_loss], newline='')
-        #np.savetxt(f"gloss_2Dgaussian_gamma_different_circuit_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}_{n_params}", [g_loss], newline='')
+        np.savetxt(f"PARAMS_2Dgaussian_gamma_different_circuit_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}_{n_params}_{iterator}", [initial_params.numpy()], newline='')
+        np.savetxt(f"dloss_2Dgaussian_gamma_different_circuit_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}_{n_params}_{iterator}", [d_loss], newline='')
+        np.savetxt(f"gloss_2Dgaussian_gamma_different_circuit_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}_{n_params}_{iterator}", [g_loss], newline='')
         # serialize weights to HDF5
         #discriminator.save_weights(f"discriminator_2Dgaussian_gamma_different_circuit_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}_{n_params}.h5")
+        t.append(time.time() - start )
+        np.savetxt(f"time_2Dgaussian_gamma_different_circuit_{nqubits}_{latent_dim}_{layers}_{training_samples}_{samples}_{lr}_{n_params}_{iterator}", [t], newline='')
 
 def main(latent_dim, layers, training_samples, n_epochs, batch_samples, lr,n_params,iterator):
     
