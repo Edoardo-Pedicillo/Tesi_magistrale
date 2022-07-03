@@ -80,12 +80,11 @@ def set_params(circuit, params, x_input, i, nqubits, layers, latent_dim):
     p = []
     index = 0
     noise = 0
-    
+    p.append(params[index]*x_input[noise][i] + params[index+1])
+    index+=2
+    noise=(noise+1)%latent_dim 
     for l in range(layers):
         for q in range(nqubits):
-            p.append(params[index]*x_input[noise][i] + params[index+1])
-            index+=2
-            noise=(noise+1)%latent_dim
             p.append(params[index]*x_input[noise][i] + params[index+1])
             index+=2
             noise=(noise+1)%latent_dim
