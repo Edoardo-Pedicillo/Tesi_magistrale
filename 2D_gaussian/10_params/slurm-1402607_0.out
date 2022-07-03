@@ -1,0 +1,30 @@
+[Qibo 0.1.7|INFO|2022-07-03 19:15:49]: Using qibojit (numba) backend on /CPU:0
+[Qibo 0.1.7|INFO|2022-07-03 19:16:12]: Using tensorflow backend on /device:CPU:0
+Traceback (most recent call last):
+  File "quantum_classical_2Dgamma.py", line 271, in <module>
+    main(**args)
+  File "quantum_classical_2Dgamma.py", line 258, in main
+    train(discriminator, latent_dim, layers, nqubits, training_samples, discriminator, circuit, n_epochs, batch_samples, lr, hamiltonian1, hamiltonian2,iterator)
+  File "quantum_classical_2Dgamma.py", line 181, in train
+    x_fake, y_fake = generate_fake_samples(initial_params, latent_dim, half_samples, circuit, nqubits, layers, hamiltonian1, hamiltonian2)
+  File "quantum_classical_2Dgamma.py", line 153, in generate_fake_samples
+    set_params(circuit, params, x_input, i, nqubits, layers, latent_dim)
+  File "quantum_classical_2Dgamma.py", line 99, in set_params
+    p.append(params[index]*x_input[noise][i] + params[index+1])
+  File "/home/edoardopedicillo/miniconda3/lib/python3.7/site-packages/tensorflow/python/ops/array_ops.py", line 1293, in _SliceHelperVar
+    return _slice_helper(var.value(), slice_spec, var)
+  File "/home/edoardopedicillo/miniconda3/lib/python3.7/site-packages/tensorflow/python/util/dispatch.py", line 201, in wrapper
+    return target(*args, **kwargs)
+  File "/home/edoardopedicillo/miniconda3/lib/python3.7/site-packages/tensorflow/python/ops/array_ops.py", line 1047, in _slice_helper
+    name=name)
+  File "/home/edoardopedicillo/miniconda3/lib/python3.7/site-packages/tensorflow/python/util/dispatch.py", line 201, in wrapper
+    return target(*args, **kwargs)
+  File "/home/edoardopedicillo/miniconda3/lib/python3.7/site-packages/tensorflow/python/ops/array_ops.py", line 1219, in strided_slice
+    shrink_axis_mask=shrink_axis_mask)
+  File "/home/edoardopedicillo/miniconda3/lib/python3.7/site-packages/tensorflow/python/ops/gen_array_ops.py", line 10447, in strided_slice
+    _ops.raise_from_not_ok_status(e, name)
+  File "/home/edoardopedicillo/miniconda3/lib/python3.7/site-packages/tensorflow/python/framework/ops.py", line 6862, in raise_from_not_ok_status
+    six.raise_from(core._status_to_exception(e.code, message), None)
+  File "<string>", line 3, in raise_from
+tensorflow.python.framework.errors_impl.InvalidArgumentError: slice index 10 of dimension 0 out of bounds. [Op:StridedSlice] name: strided_slice/
+srun: error: bell: task 0: Exited with exit code 1

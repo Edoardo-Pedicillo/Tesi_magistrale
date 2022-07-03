@@ -1,0 +1,2 @@
+[Qibo 0.1.7|INFO|2022-07-03 18:28:19]: Using qibojit (numba) backend on /CPU:0
+[Qibo 0.1.7|INFO|2022-07-03 18:28:20]: Using tensorflow backend on /device:CPU:0
