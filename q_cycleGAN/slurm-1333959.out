@@ -1,5 +1,5 @@
-slurmstepd-goeppert: error: *** JOB 1333959 ON goeppert CANCELLED AT 2022-06-24T12:26:42 DUE TO NODE FAILURE, SEE SLURMCTLD LOG FOR DETAILS ***
-slurmstepd-goeppert: error: *** JOB 1333959 STEPD TERMINATED ON goeppert AT 2022-06-24T12:29:01 DUE TO JOB NOT ENDING WITH SIGNALS ***
-[Qibo 0.1.7|INFO|2022-06-24 12:47:36]: Using qibojit (numba) backend on /CPU:0
-[Qibo 0.1.7|INFO|2022-06-24 12:48:17]: Using tensorflow backend on /device:CPU:0
-[Qibo 0.1.7|WARNING|2022-06-24 12:48:17]: `set_threads` is not supported by the tensorflow backend. Please use tensorflow's thread setters: `tf.config.threading.set_inter_op_parallelism_threads` or `tf.config.threading.set_intra_op_parallelism_threads` to switch the number of threads.
+slurmstepd-bethe: error: *** JOB 1333959 ON bethe CANCELLED AT 2022-07-04T05:24:16 DUE TO NODE FAILURE, SEE SLURMCTLD LOG FOR DETAILS ***
+slurmstepd-bethe: error: *** JOB 1333959 STEPD TERMINATED ON bethe AT 2022-07-04T05:25:43 DUE TO JOB NOT ENDING WITH SIGNALS ***
+[Qibo 0.1.7|INFO|2022-07-04 05:58:10]: Using qibojit (numba) backend on /CPU:0
+[Qibo 0.1.7|INFO|2022-07-04 06:05:15]: Using tensorflow backend on /device:CPU:0
+[Qibo 0.1.7|WARNING|2022-07-04 06:05:15]: `set_threads` is not supported by the tensorflow backend. Please use tensorflow's thread setters: `tf.config.threading.set_inter_op_parallelism_threads` or `tf.config.threading.set_intra_op_parallelism_threads` to switch the number of threads.

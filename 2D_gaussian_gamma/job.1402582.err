@@ -1,2 +1,4 @@
-[Qibo 0.1.7|INFO|2022-07-03 18:27:47]: Using qibojit (numba) backend on /CPU:0
-[Qibo 0.1.7|INFO|2022-07-03 18:27:49]: Using tensorflow backend on /device:CPU:0
+srun: error: Node failure on bethe
+slurmstepd-bethe: error: *** JOB 1402582 ON bethe CANCELLED AT 2022-07-04T05:24:17 DUE TO NODE FAILURE, SEE SLURMCTLD LOG FOR DETAILS ***
+[Qibo 0.1.7|INFO|2022-07-04 05:57:04]: Using qibojit (numba) backend on /CPU:0
+[Qibo 0.1.7|INFO|2022-07-04 06:01:09]: Using tensorflow backend on /device:CPU:0

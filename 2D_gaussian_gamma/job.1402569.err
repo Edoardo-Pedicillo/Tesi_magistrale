@@ -1,2 +1,3 @@
-[Qibo 0.1.7|INFO|2022-07-03 17:46:44]: Using qibojit (numba) backend on /CPU:0
-[Qibo 0.1.7|INFO|2022-07-03 17:46:45]: Using tensorflow backend on /device:CPU:0
+slurmstepd-bose: error: *** JOB 1402569 ON bose CANCELLED AT 2022-07-04T03:36:32 DUE TO NODE FAILURE, SEE SLURMCTLD LOG FOR DETAILS ***
+[Qibo 0.1.7|INFO|2022-07-04 04:03:51]: Using qibojit (numba) backend on /CPU:0
+[Qibo 0.1.7|INFO|2022-07-04 04:04:52]: Using tensorflow backend on /device:CPU:0
