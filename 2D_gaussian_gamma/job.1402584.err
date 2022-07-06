@@ -1,4 +1,0 @@
-srun: error: Node failure on bethe
-slurmstepd-bethe: error: *** JOB 1402584 ON bethe CANCELLED AT 2022-07-04T05:24:16 DUE TO NODE FAILURE, SEE SLURMCTLD LOG FOR DETAILS ***
-[Qibo 0.1.7|INFO|2022-07-04 05:57:00]: Using qibojit (numba) backend on /CPU:0
-[Qibo 0.1.7|INFO|2022-07-04 06:01:09]: Using tensorflow backend on /device:CPU:0

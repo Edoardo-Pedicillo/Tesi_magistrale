@@ -1,4 +1,0 @@
-srun: error: Node failure on bell
-slurmstepd-bell: error: *** JOB 1402590 ON bell CANCELLED AT 2022-07-04T02:21:06 DUE TO NODE FAILURE, SEE SLURMCTLD LOG FOR DETAILS ***
-[Qibo 0.1.7|INFO|2022-07-04 02:49:13]: Using qibojit (numba) backend on /CPU:0
-[Qibo 0.1.7|INFO|2022-07-04 02:54:19]: Using tensorflow backend on /device:CPU:0
